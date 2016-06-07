@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-lg-6">
+     <h3>Ventas</h3>
+    <div class="panel panel-default">
+      <!--div class="panel-heading">Ventas</div-->
+      <table class="table">
+        <tr>
+          <th>Descripcion</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+        </tr>
+        <tr ng-repeat="f in factura">
+          <td>{{f.descripcion}}</td>
+          <td ng-click="incrementarCantidad(f.id)">{{f.cantidad}}</td>
+          <td>${{f.precio}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <h3>Productos</h3>
+    <input type="text" ng-model="nombre" ng-keypress="$event.which === 13 && agregarProducto(nombre)">
+    <!--button class="btn btn-primary" ng-click="agregarProducto(nombre)">+</button-->
+    <!--input type="text" ng-model="query"-->
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="p in productos" ng-dblclick="agregarItem(p)">
+        {{p}}
+      </li>
+    </ul>
+  </div>
+</div>
