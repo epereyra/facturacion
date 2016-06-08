@@ -1,20 +1,22 @@
 <div class="container">
   <div class="col-lg-6">
-     <h3>Ventas</h3>
+    <h3>Ventas</h3>
     <div class="panel panel-default">
-      <!--div class="panel-heading">Ventas</div-->
-      <table class="table">
-        <tr>
-          <th>Descripcion</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-        </tr>
-        <tr ng-repeat="f in factura">
-          <td>{{f.descripcion}}</td>
-          <td ng-click="incrementarCantidad(f.id)">{{f.cantidad}}</td>
-          <td>${{f.precio}}</td>
-        </tr>
-      </table>
+      <div class="scroll-container">
+        <!--div class="panel-heading">Ventas</div-->
+        <table class="table">
+          <tr>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+          </tr>
+          <tr ng-repeat="i in items">
+            <td>{{i.nombre}}</td>
+            <td ng-click="incrementarCantidad(i.id)">{{i.cantidad}}</td>
+            <td>${{i.cantidad*i.precio}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div class="col-lg-6">
@@ -22,10 +24,12 @@
     <input type="text" ng-model="nombre" ng-keypress="$event.which === 13 && agregarProducto(nombre)">
     <!--button class="btn btn-primary" ng-click="agregarProducto(nombre)">+</button-->
     <!--input type="text" ng-model="query"-->
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="p in productos" ng-dblclick="agregarItem(p)">
-        {{p}}
-      </li>
-    </ul>
+    <div class="scroll-container">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="p in productos" ng-click="agregarItem(p)">
+          {{p.nombre}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
