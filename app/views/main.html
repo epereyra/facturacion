@@ -1,9 +1,8 @@
-<div class="container">
-  <div class="col-lg-6">
-    <h3>Ventas</h3>
-    <div class="panel panel-default">
+<div class="col-lg-8">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Ventas</h3>
       <div class="scroll-container">
-        <!--div class="panel-heading">Ventas</div-->
         <table class="table">
           <tr>
             <th>Descripcion</th>
@@ -12,24 +11,49 @@
           </tr>
           <tr ng-repeat="i in items">
             <td>{{i.nombre}}</td>
-            <td ng-click="incrementarCantidad(i.id)">{{i.cantidad}}</td>
+            <td ng-click="incrementarCantidad(i._id)">{{i.cantidad}}</td>
             <td>${{i.cantidad*i.precio}}</td>
           </tr>
         </table>
       </div>
     </div>
   </div>
-  <div class="col-lg-6">
-    <h3>Productos</h3>
-    <input type="text" ng-model="nombre" ng-keypress="$event.which === 13 && agregarProducto(nombre)">
-    <!--button class="btn btn-primary" ng-click="agregarProducto(nombre)">+</button-->
-    <!--input type="text" ng-model="query"-->
-    <div class="scroll-container">
-      <ul class="list-group">
-        <li class="list-group-item" ng-repeat="p in productos" ng-click="agregarItem(p)">
-          {{p.nombre}}
-        </li>
-      </ul>
+  <div class="row">
+    <div class="col-lg-6">
+      <input type="text" ng-model="cliente" placeholder="Buscar Cliente">
     </div>
+    <div class="col-lg-6">
+      <table class="table">
+        <tr>
+          <td>Subtotal</td>
+          <td>${{subtotal}}</td>
+        </tr>
+        <tr>
+          <td>Impuestos</td>
+          <td>${{impuestos}}</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>${{total}}</td>
+        </tr>
+        <tr>
+          <td>Subtotal</td>
+          <td>${{aPagar}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4">
+  <h3>Productos</h3>
+  <input type="text" ng-model="nombre" placeholder="Buscar Producto">
+  <div class="scroll-container">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="p in productos|filter:nombre">
+        <span ng-click="agregarItem(p)">
+            {{p.nombre}}
+          </span>
+      </li>
+    </ul>
   </div>
 </div>
